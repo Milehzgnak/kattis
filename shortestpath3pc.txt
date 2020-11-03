@@ -1,0 +1,28 @@
+1.Use Bellman Ford algorithm to find the shortest path from a single source vertex
+  v represents vertex 0 to n-1
+  e represents directed edge from vertex u to v with weight w
+  for every v
+    D[v] = INF
+  D[s] = 0
+  for 1 to V-1
+    for every edge e
+      if (D[u] != INF and D[v] > D[u] + w)
+        D[v] = D[u] + w
+  
+  all vertices should have found their shortest path from source after v-1 relaxations
+ 
+  run Bellman Ford again
+  for 1 to V-1
+    for every edge e
+      if (D[u] != INF and D[v] > D[u] + w)
+        D[v] = -INF
+
+  if vertex v is still able to be relaxed, it means its connected to/ or part of a -ve
+  weighted cycle. Hence we assign -INF to D[v]
+  
+  if D[v] = INF (not reachable from source)
+    print "impossible"
+  if D[v] = -INF (abitrarily short path from s to v)
+    print "-Infinity"
+  else:
+    print D[v]
